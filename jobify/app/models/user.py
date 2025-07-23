@@ -2,9 +2,13 @@
 
 from sqlalchemy import Column, String, Integer, Boolean
 from app.database import Base
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
+
+    profile = relationship("Profile", uselist=False, back_populates="user")
+
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, nullable=False, index=True)
