@@ -15,3 +15,4 @@ class Profile(Base):
     experience = Column(String, nullable=True)
 
     user = relationship("User", back_populates="profile")
+    profile_photo = Column(String, nullable=True)  # URL or path to the image
