@@ -9,6 +9,8 @@ class User(Base):
 
     profile = relationship("Profile", uselist=False, back_populates="user")
     experiences = relationship("Experience", back_populates="user", cascade="all, delete")
+    educations = relationship("Education", back_populates="user", cascade="all, delete")
+
 
 
 
