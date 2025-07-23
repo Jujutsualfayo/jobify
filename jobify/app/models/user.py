@@ -8,6 +8,8 @@ class User(Base):
     __tablename__ = "users"
 
     profile = relationship("Profile", uselist=False, back_populates="user")
+    experiences = relationship("Experience", back_populates="user", cascade="all, delete")
+
 
 
     id = Column(Integer, primary_key=True, index=True)
