@@ -1,20 +1,6 @@
 version: "3.9"
 
 services:
-  backend:
-    build:
-      context: ./backend
-    container_name: jobify-backend
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - ./backend:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgres://postgres:Alphafemale1@db:5432/jobify_db
-
   db:
     image: postgres:16
     restart: always
@@ -26,6 +12,18 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5433:5432"
+
+  web:
+    build:
+      context: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/code
+    working_dir: /code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 
 volumes:
   postgres_data:
