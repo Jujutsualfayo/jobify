@@ -3,6 +3,7 @@ from app.routes import user, auth, job, application
 from app.database import Base, engine
 from app.models import user as user_model  
 from app.routes import profile
+from fastapi.staticfiles import StaticFiles
 
 # Create tables if they don't exist
 Base.metadata.create_all(bind=engine)
@@ -15,6 +16,7 @@ app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 app.include_router(job.router, prefix="/api/jobs", tags=["Jobs"])
 app.include_router(application.router, prefix="/api/applications", tags=["Applications"])
 app.include_router(profile.router, prefix="/profile", tags=["Profile"])
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def home():

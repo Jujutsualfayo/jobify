@@ -8,6 +8,7 @@ class ProfileBase(BaseModel):
     skills: Optional[str] = None  # Comma-separated for now
     education: Optional[str] = None
     experience: Optional[str] = None
+    profile_photo: Optional[str]
 
 class ProfileCreate(ProfileBase):
     pass
