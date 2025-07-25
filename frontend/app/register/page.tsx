@@ -12,7 +12,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post("/register", form);
+      await axios.post("/api/auth/register", form);
       router.push("/login");
     } catch (err) {
       alert("Registration failed");

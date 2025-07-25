@@ -4,6 +4,7 @@ from app.routes import user, auth, job, application, education, experience, skil
 from app.database import Base, engine
 from app.models import user as user_model  
 from app.routes import profile
+from app.routes import auth
 from fastapi.staticfiles import StaticFiles
 
 # Create tables if they don't exist
