@@ -1,4 +1,4 @@
-# app/routes/skills.py
+# app/routes/skill.py
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session

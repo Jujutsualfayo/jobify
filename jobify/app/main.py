@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-from app.routes import user, auth, job, application , education , experience , skills
+from app.routes import user, auth, job, application , education , experience , skill as skills
 from app.database import Base, engine
 from app.models import user as user_model  
 from app.routes import profile
 from fastapi.staticfiles import StaticFiles
+
+from jobify.app.routes import skill
 
 # Create tables if they don't exist
 Base.metadata.create_all(bind=engine)
