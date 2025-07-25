@@ -1,13 +1,27 @@
+// app/profile/page.tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import type { AxiosResponse } from "axios";
+import axios from "@/lib/api";
+
 export default function ProfilePage() {
+  const [profile, setProfile] = useState<any>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("/users/me", { headers: { Authorization: `Bearer ${token}` } })
+      .then((res: AxiosResponse) => setProfile(res.data))
+      .catch(() => alert("Please login again."));
+  }, []);
+
+  if (!profile) return <p>Loading...</p>;
+
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
-      <div className="max-w-3xl mx-auto bg-white rounded shadow p-6">
-        <h1 className="text-3xl font-bold mb-4">Your Profile</h1>
-        <p>Full Name: John Doe</p>
-        <p>Email: john@example.com</p>
-        <p>Skills: React, FastAPI, PostgreSQL</p>
-        {/* Later we’ll fetch this from the API */}
-      </div>
+    <div className="max-w-md mx-auto py-20">
+      <h2 className="text-2xl font-bold mb-4">Welcome, {profile.name}</h2>
+      <p>Email: {profile.email}</p>
     </div>
   );
 }
