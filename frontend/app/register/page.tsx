@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import axios from "@/lib/api";
+import axios from "@/lib/axios";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
