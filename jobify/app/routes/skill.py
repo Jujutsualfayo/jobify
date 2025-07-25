@@ -1,6 +1,7 @@
 # app/routes/skill.py
 
 from fastapi import APIRouter, Depends, HTTPException
+from app.schemas import skill
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -10,7 +11,7 @@ from app.dependencies.auth import get_current_user
 
 router = APIRouter(prefix="/skills", tags=["Skills"])
 
-@router.post("/", response_model=schemas.skill.Skill)
+@router.post("/", response_model=skill.Skill)
 def create_skill(
     skill: schemas.skill.SkillCreate,
     db: Session = Depends(get_db),
