@@ -1,14 +1,18 @@
 // app/layout.tsx
-import "./globals.css";
-import { ReactNode } from "react";
-import Navbar from "@/components/Navbar";
+import './globals.css';
+import Navbar from '@/components/Navbar';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export const metadata = {
+  title: 'Jobify',
+  description: 'Simple LinkedIn clone with FastAPI + Next.js',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900">
+      <body>
         <Navbar />
-        <main className="max-w-4xl mx-auto p-6">{children}</main>
+        <main className="p-4">{children}</main>
       </body>
     </html>
   );
