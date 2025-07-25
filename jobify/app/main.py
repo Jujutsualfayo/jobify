@@ -5,7 +5,6 @@ from app.models import user as user_model
 from app.routes import profile
 from fastapi.staticfiles import StaticFiles
 
-from jobify.app.routes import skill
 
 # Create tables if they don't exist
 Base.metadata.create_all(bind=engine)
